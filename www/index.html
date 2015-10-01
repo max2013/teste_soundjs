@@ -28,67 +28,14 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
        <!-- <link rel="stylesheet" type="text/css" href="css/index.css" /-->
         <title>teste</title>
-        <script type="text/javascript" src="cordova.js"></script>
-       <!-- <script type="text/javascript" src="js/index.js"></script>-->
-        <!-- <script type="text/javascript" src="lib/soundjs-NEXT.combined.js"></script>
-         <script type="text/javascript" charset="utf-8" src="lib/cordovaaudioplugin-NEXT.min.js"></script>-->
+    
       
    
     </head>
   <body onload="init();">
-   <header  class="SoundJS">
-    
-         
-</header>
+    <h1 id="status">Teste.</h1>
 
 
-    <div class="content" id="content" style="height: auto">
-    <p><button id="playMp3">Play MP3146</button></p>
-</div>
-<div id="error">
-    <p id="errorMsg"></p>
-</div>
-<script id="editable">
-    var displayMessage;     // the HTML element we use to display messages to the user
-        var displayErr;
-        
-        function init(){
-            document.addEventListenre("deviceready", onDeviceReady, false);
-        }
-        
-    function onDeviceReady() {
-        document.querySelector("#playMp3").addEventListener("touchend", playMP3, false);
-        
-    }
-
-function getPhoneGapPath() {
-
-    var path = window.location.pathname;
-    path = path.substr( 0, path.length - 10 );
-    return 'file://' + path;
-
-};
-
-function playMP3() {
-    var resource = getPhoneGapPath();
-    var rootFolder = cordova.file.applicationDirectory;
-    var mp3URL = getMediaURL("file:///var/mobile/Applications/7CD8BBD3-00B6-4A3F-800E-D47560D8F021/teste_cordova_soundjs/www/_assets/audio/teste.mp3");
-    var media = new Media(mp3URL, null, mediaError);
-    media.play();
-}
-
-function getMediaURL(s) {
-    if(device.platform.toLowerCase() === "android") return "/android_asset/www/" + s;
-    return s;
-}
-
-function mediaError(e) {
-    alert('Media Error');
-    alert(JSON.stringify(e));
-}
-    // launch the app inside of this scope
-    
-</script>
  
     
     
@@ -97,11 +44,64 @@ function mediaError(e) {
    
         
             
-        
-        
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+         <script type="text/javascript" src="lib/soundjs-NEXT.combined.js"></script>
+         <script type="text/javascript" charset="utf-8" src="lib/cordovaaudioplugin-NEXT.min.js"></script>
         <script type="text/javascript">
             //app.initialize();
         </script>
-   
+            <script>
+            var display;
+
+            function init() {
+                display = document.getElementById("status");
+                display.addEventListener("click", handleClick, false);
+                display.innerHTML = "Touch to Start";
+            }
+
+            function handleClick(event) {
+                display.removeEventListener("click", handleClick, false);
+                var myApp = new myNameSpace.MyApp();
+            }
+
+            this.myNameSpace = this.myNameSpace || {};
+            (function() {
+                // the application
+                function MyApp() {
+                    this.init();
+                }
+
+                MyApp.prototype = {
+                    displayMessage:null,
+
+                    init: function() {
+                        this.displayMessage = document.getElementById("status");
+
+                        if (!createjs.Sound.initializeDefaultPlugins()) {return;}
+
+                        var audioPath = "assets/";
+                        var sounds = [
+                            {id:"Music", src:"teste.wav"},
+                            {id:"Thunder", src:"Thunder1.ogg"}
+                        ];
+
+                        this.displayMessage.innerHTML = "loading audio";
+                        createjs.Sound.alternateExtensions = ["mp3"];
+                        var loadProxy = createjs.proxy(this.handleLoad, this);
+                        createjs.Sound.addEventListener("fileload", loadProxy);
+                        createjs.Sound.registerSounds(sounds, audioPath);
+                    },
+
+                    handleLoad: function(event) {
+                        createjs.Sound.play(event.src);
+                        this.displayMessage.innerHTML = "Playing " + event.src;
+                    }
+                }
+
+                myNameSpace.MyApp = MyApp;
+            }());
+        </script>
     </body>
 </html>
