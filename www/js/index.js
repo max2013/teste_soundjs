@@ -505,11 +505,11 @@ function initAudio() {
    // alert(cordova.file.applicationDirectory); 
   //  alert(cordova.file.documentsDirectory); 
   //  alert(cordova.file.dataDirectory); 
-  var path = window.location.pathname; 
-      path = path.substr( path, path.length - 10 ); 
+ // var path = window.location.pathname; 
+  //    path = path.substr( path, path.length - 10 ); 
 
-    alert(path);
-    alert(window.location);   
+  //  alert(path);
+   // alert(window.location);   
 
     if ( isPhoneGap() ) {
         if (device.platform == "Android") {
