@@ -112,7 +112,8 @@
                                 createjs.Sound.registerPlugins([createjs.CordovaAudioPlugin]);
                 // Create a single item to load.
                 var assetsPath = "_assets/audio/";
-                this.src = assetsPath + "teste.mp3";  //    "bgMusic.mp3";
+                //this.src = assetsPath + "teste.mp3";  //    "bgMusic.mp3";
+                this.src ="http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3";  //    "bgMusic.mp3";
                 
                 // NOTE createjs.proxy is used to apply scope so we stay within the touch scope, allowing sound to play on mobile devices
                 this.loadProxy = createjs.proxy(this.handleLoad, this);

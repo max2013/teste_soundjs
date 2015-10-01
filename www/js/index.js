@@ -498,21 +498,36 @@ function isPhoneGap() {
         && /^file:\/{3}[^\/]/i.test(window.location.href)
         && /ios|iphone|ipod|ipad|android/i.test(navigator.userAgent)) ||
         window.tinyHippos; //this is to cover phonegap emulator
+        window.appRootDir.toInternalURL();
 }
 
 function initAudio() {
+   // alert(cordova.file.applicationDirectory); 
+  //  alert(cordova.file.documentsDirectory); 
+  //  alert(cordova.file.dataDirectory); 
+  var path = window.location.pathname; 
+      path = path.substr( path, path.length - 10 ); 
+
+    alert(path);
+    alert(window.location);   
+
     if ( isPhoneGap() ) {
         if (device.platform == "Android") {
-            monsterRoar = new Media("/android_asset/www/assets/sounds/167890__erdie__monster.wav");
+            monsterRoar = new Media("/android_asset/www/assets/sounds/Thunder1.mp3",null, mediaError);
             //bgLoop = new Media( "/android_asset/www/assets/sounds/115261__rap2h__1mi.wav", onSoundSuccess, onSoundError, onSoundStatus);
-        } else {
-            monsterRoar = new Media("assets/sounds/167890__erdie__monster.wav");
+        } else { 
+            monsterRoar = new Media( "http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3",null, mediaError);
             //bgLoop = new Media( "assets/sounds/115261__rap2h__1mi.wav", onSoundSuccess, onSoundError, onSoundStatus);
-        }
+        } 
     }
     else {
-        monsterRoar = $('<audio src="assets/sounds/167890__erdie__monster.wav" preload="true"></a>').get(0);
+        monsterRoar = $('<audio src="assets/sounds/Thunder1.mp3" preload="true"></a>').get(0);
     }
+}
+
+ function  mediaError(e) {
+    alert('Media Error');
+    alert(JSON.stringify(e));
 }
 
 function init(event) {
