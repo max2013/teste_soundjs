@@ -37,7 +37,8 @@
     </head>
   <body onload="init();">
    <header  class=" "> 
-   <p>TESTE</p>
+   <p>TESTE2</p>
+   <a href="http://www.google.com" rel="external" target="_blank"  onClick="window.open('http://www.google.com' ,'_blank', 'location=yes'); return false;">Link</a>
  
 </header>
 
@@ -57,16 +58,16 @@
 
          // var ref = window.open('http://www.avmeventos.com.br/clientes/sanofi/teste_turbo/initgame.html', '_blank', //'toolbar=no,location=no,disallowoverscroll=yes,mediaPlaybackRequiresUserAction=yes,enableViewportScale=yes');
 
-         var ref = window.open('http://www.avmeventos.com.br/clientes/sanofi/teste_turbo/initgame.html', '_blank', 'location=yes');
-         ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); }); 
+       //  var ref = window.open('http://www.avmeventos.com.br/clientes/sanofi/teste_turbo/initgame.html', '_blank', 'location=yes');
+       //  ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); }); 
 
-         ref.addEventListener('loadstop', function(event) {
-             alert('background window loaded'); 
-         });
+       //  ref.addEventListener('loadstop', function(event) {
+        //     alert('background window loaded'); 
+        // });
          // close InAppBrowser after 5 seconds
-         setTimeout(function() {
+         //setTimeout(function() {
             // ref.close();
-         }, 5000);
+        // }, 5000);
           
     }
  
@@ -81,8 +82,8 @@
             
         
         
-        <script type="text/javascript">
-            //app.initialize();
+        <script type="text/app">
+           // app.initialize();
         </script>
    
     </body>
