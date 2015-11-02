@@ -35,36 +35,29 @@
       
    
     </head>
-  <body onload="init();">
-   <header  class=" "> 
+  <body>
+   <header> 
    <p>TESTE2</p>
-   <a href="http://www.google.com" rel="external" target="_self"  onClick="window.open('http://www.google.com' ,'_blank', 'location=yes'); return false;">Link</a>
+   <a href="http://www.avmeventos.com.br/clientes/sanofi/teste_turbo/initgame.html" rel="external" target="_blank"  onClick="window.open('http://www.avmeventos.com.br/clientes/sanofi/teste_turbo/initgame.html' ,'_blank', 'location=yes'); return false;">Link</a>
  
 </header>
-
-
  
  
-<script id="editable">
-    var displayMessage;     // the HTML element we use to display messages to the user
-        var displayErr;
-        
-        function init(){
-            document.addEventListener("deviceready", onDeviceReady, false);
-        }
+<script >
+ document.addEventListener("deviceready", onDeviceReady, false);
         
     function onDeviceReady() {
-          window.open = cordova.InAppBrowser.open;
+          //window.open = cordova.InAppBrowser.open;
 
          // var ref = window.open('http://www.avmeventos.com.br/clientes/sanofi/teste_turbo/initgame.html', '_blank', //'toolbar=no,location=no,disallowoverscroll=yes,mediaPlaybackRequiresUserAction=yes,enableViewportScale=yes');
 
-       //  var ref = window.open('http://www.avmeventos.com.br/clientes/sanofi/teste_turbo/initgame.html', '_blank', 'location=yes');
-       //  ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); }); 
+         var ref = window.open('http://www.avmeventos.com.br/clientes/sanofi/teste_turbo/initgame.html', '_blank', 'location=yes');
+         ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); }); 
 
-       //  ref.addEventListener('loadstop', function(event) {
-        //     alert('background window loaded'); 
-        // });
-         // close InAppBrowser after 5 seconds
+         ref.addEventListener('loadstop', function(event) {
+             alert('LEITURA COMPLETA!'); 
+         });
+         // close InAppBrowser after 5 seconds 
          //setTimeout(function() {
             // ref.close();
         // }, 5000);
