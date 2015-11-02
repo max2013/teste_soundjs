@@ -25,7 +25,7 @@
         <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-tap-highlight" content="no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=yes, initial-scale=1, maximum-scale=1, minimum-scale=1,  target-densitydpi=device-dpi" />
+        <meta name="viewport" content="user-scalable=yes, initial-scale=1, maximum-scale=1, minimum-scale=1,  twidth=device-width, height=device-height, target-densitydpi=device-dpi" />
        <!-- <link rel="stylesheet" type="text/css" href="css/index.css" /-->
         <title>teste</title>
         <script type="text/javascript" src="cordova.js"></script>
@@ -37,22 +37,26 @@
     </head>
   <body>
    <header> 
-   <p>TESTE2</p>
+   <p>TESTE3</p>
    <a href="http://www.avmeventos.com.br/clientes/sanofi/teste_turbo/initgame.html" rel="external" target="_blank"  onClick="window.open('http://www.avmeventos.com.br/clientes/sanofi/teste_turbo/initgame.html' ,'_blank', 'location=yes'); return false;">Link</a>
  
 </header>
  
  
 <script >
- document.addEventListener("deviceready", onDeviceReady, false);
-        
-    function onDeviceReady() {
-          //window.open = cordova.InAppBrowser.open;
 
+window.addEventListener('load', function () {
+    document.addEventListener('deviceready', function () {
+        alert("PhoneGap is now loaded!");
+
+        window.open = cordova.InAppBrowser.open;
+         alert('deviceready!'); 
          // var ref = window.open('http://www.avmeventos.com.br/clientes/sanofi/teste_turbo/initgame.html', '_blank', //'toolbar=no,location=no,disallowoverscroll=yes,mediaPlaybackRequiresUserAction=yes,enableViewportScale=yes');
 
          var ref = window.open('http://www.avmeventos.com.br/clientes/sanofi/teste_turbo/initgame.html', '_blank', 'location=yes');
          ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); }); 
+         ref.addEventListener('loadstart', function(event) { alert('start: ' + event.url); });
+         ref.addEventListener('exit', function(event) { alert(event.type); });
 
          ref.addEventListener('loadstop', function(event) {
              alert('LEITURA COMPLETA!'); 
@@ -62,7 +66,11 @@
             // ref.close();
         // }, 5000);
           
-    }
+    }, false);
+}, false);
+ //document.addEventListener("deviceready", onDeviceReady, false);
+        
+   
  
 </script>
  
