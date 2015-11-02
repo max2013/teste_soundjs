@@ -37,7 +37,7 @@
     </head>
   <body onload="init();">
    <header  class=" "> 
-   
+   <p>TESTE</p>
  
 </header>
 
@@ -55,9 +55,13 @@
     function onDeviceReady() {
           window.open = cordova.InAppBrowser.open;
 
-          var ref = window.open('http://www.avmeventos.com.br/clientes/sanofi/teste_turbo/initgame.html', '_blank', 'toolbar=no,location=no,disallowoverscroll=yes,mediaPlaybackRequiresUserAction=yes,enableViewportScale=yes');
+         // var ref = window.open('http://www.avmeventos.com.br/clientes/sanofi/teste_turbo/initgame.html', '_blank', //'toolbar=no,location=no,disallowoverscroll=yes,mediaPlaybackRequiresUserAction=yes,enableViewportScale=yes');
+
+         var ref = window.open('http://www.avmeventos.com.br/clientes/sanofi/teste_turbo/initgame.html', '_blank', 'location=yes');
+         ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); }); 
+
          ref.addEventListener('loadstop', function(event) {
-             //alert('background window loaded'); 
+             alert('background window loaded'); 
          });
          // close InAppBrowser after 5 seconds
          setTimeout(function() {
