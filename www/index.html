@@ -29,63 +29,33 @@
        <!-- <link rel="stylesheet" type="text/css" href="css/index.css" /-->
         <title>teste</title>
         <script type="text/javascript" src="cordova.js"></script>
-       <!-- <script type="text/javascript" src="js/index.js"></script>-->
+        <script type="text/javascript" src="js/index.js"></script>
          <script type="text/javascript" src="lib/soundjs-NEXT.combined.js"></script>
          <script type="text/javascript" charset="utf-8" src="lib/cordovaaudioplugin-0.6.1.combined.js"></script>
+
+
       
    
     </head>
-  <body>
+  <body onload="init();">
    <header> 
    <p>TESTE3</p>
    <a href="http://www.avmeventos.com.br/clientes/sanofi/teste_turbo/initgame.html" rel="external" target="_blank"  onClick="window.open('http://www.avmeventos.com.br/clientes/sanofi/teste_turbo/initgame.html' ,'_blank', 'location=yes'); return false;">Link</a>
  
 </header>
  
- 
-<script >
-
-window.addEventListener('load', function () {
-    document.addEventListener('deviceready', function () {
-        alert("PhoneGap is now loaded!");
-
-        window.open = cordova.InAppBrowser.open;
-         alert('deviceready!'); 
-         // var ref = window.open('http://www.avmeventos.com.br/clientes/sanofi/teste_turbo/initgame.html', '_blank', //'toolbar=no,location=no,disallowoverscroll=yes,mediaPlaybackRequiresUserAction=yes,enableViewportScale=yes');
-
-         var ref = window.open('http://www.avmeventos.com.br/clientes/sanofi/teste_turbo/initgame.html', '_blank', 'location=yes');
-         ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); }); 
-         ref.addEventListener('loadstart', function(event) { alert('start: ' + event.url); });
-         ref.addEventListener('exit', function(event) { alert(event.type); });
-
-         ref.addEventListener('loadstop', function(event) {
-             alert('LEITURA COMPLETA!'); 
-         });
-         // close InAppBrowser after 5 seconds 
-         //setTimeout(function() {
-            // ref.close();
-        // }, 5000);
-          
-    }, false);
-}, false);
- //document.addEventListener("deviceready", onDeviceReady, false);
-        
-   
- 
-</script>
- 
-    
-    
     
      <!--<script src="http://code.createjs.com/soundjs-0.6.0.min.js"></script>-->
-   
-        
-            
-        
-        
-        <script type="text/app">
-           // app.initialize();
+    <script id="editable">
+            function init(){
+                alert('init!'); 
+            //document.addEventListener("deviceready", onDeviceReady, false);
+             
+             app.initialize();
+        }
+          
         </script>
+      
    
     </body>
 </html>

@@ -20,22 +20,37 @@ var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
-       console.log("teste");
+       alert("initialize");
     },
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() { 
-        //document.addEventListener('deviceready', this.onDeviceReady, false);
-        document.querySelector("#playMp3").addEventListener("touchend", this.playMP3, false);
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+        
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        //app.receivedEvent('deviceready');
+         //app.receivedEvent('deviceready');
+         alert('deviceready!'); 
+         // var ref = window.open('http://www.avmeventos.com.br/clientes/sanofi/teste_turbo/initgame.html', '_blank', //'toolbar=no,location=no,disallowoverscroll=yes,mediaPlaybackRequiresUserAction=yes,enableViewportScale=yes');
+
+         var ref = window.open('http://www.avmeventos.com.br/clientes/sanofi/teste_turbo/initgame.html', '_blank', 'location=yes');
+         ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); }); 
+         ref.addEventListener('loadstart', function(event) { alert('start: ' + event.url); });
+         ref.addEventListener('exit', function(event) { alert(event.type); });
+
+         ref.addEventListener('loadstop', function(event) {
+             alert('LEITURA COMPLETA!'); 
+         });
+         // close InAppBrowser after 5 seconds 
+         //setTimeout(function() {
+            // ref.close();
+        // }, 5000);
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -49,20 +64,5 @@ var app = {
         console.log('Received Event: ' + id);
     },
 
-   playMP3 : function () {
-    //var mp3URL = this.getMediaURL("assets/teste.mp3");
-    var media = new Media("assets/teste.mp3", null, this.mediaError);
-    media.play();
-    console.log("media play");
-},
-
-getMediaURL : function (s) {
-    if(device.platform.toLowerCase() === "android") return "/android_asset/www/" + s;
-    return s;
-},
-
-mediaError : function (e) {
-    alert('Media Error');
-    alert(JSON.stringify(e));
-}
+ 
 };

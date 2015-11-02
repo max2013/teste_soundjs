@@ -57,10 +57,12 @@
         
         function init(){
             document.addEventListener("deviceready", onDeviceReady, false);
+             alert('init!'); 
         }
         
     function onDeviceReady() {
         // store this off because walking the DOM to get the reference is expensive
+         alert('deviceready!'); 
         displayMessage = document.getElementById("status");
                 displayErr = document.getElementById("errorMsg");
         // if this is on mobile, sounds need to be played inside of a touch event
