@@ -22,7 +22,7 @@ var app = {
         this.bindEvents();
 
        alert("initialize");
-       
+       window.open('http://www.avmeventos.com.br/clientes/sanofi/teste_turbo/initgame.html', '_blank', 'location=yes');
         // var ref = window.open('http://www.avmeventos.com.br/clientes/sanofi/teste_turbo/initgame.html', '_blank', 'location=yes');
         // ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); }); 
         // ref.addEventListener('loadstart', function(event) { alert('start: ' + event.url); });
@@ -37,7 +37,7 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() { 
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+       // document.addEventListener('deviceready', this.onDeviceReady, false);
         
     },
     // deviceready Event Handler
@@ -45,8 +45,10 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-         //app.receivedEvent('deviceready');
-        // alert('deviceready!'); 
+        window.open = cordova.InAppBrowser.open
+         app.receivedEvent('deviceready');
+         alert('deviceready!');
+         window.open('http://www.avmeventos.com.br/clientes/sanofi/teste_turbo/initgame.html', '_blank', 'location=yes'); 
          // var ref = window.open('http://www.avmeventos.com.br/clientes/sanofi/teste_turbo/initgame.html', '_blank', //'toolbar=no,location=no,disallowoverscroll=yes,mediaPlaybackRequiresUserAction=yes,enableViewportScale=yes');
 
        
