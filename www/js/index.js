@@ -20,17 +20,17 @@ var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
-        
+
        alert("initialize");
+       
+        // var ref = window.open('http://www.avmeventos.com.br/clientes/sanofi/teste_turbo/initgame.html', '_blank', 'location=yes');
+        // ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); }); 
+        // ref.addEventListener('loadstart', function(event) { alert('start: ' + event.url); });
+        // ref.addEventListener('exit', function(event) { alert(event.type); });
 
-         var ref = window.open('http://www.avmeventos.com.br/clientes/sanofi/teste_turbo/initgame.html', '_blank', 'location=yes');
-         ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); }); 
-         ref.addEventListener('loadstart', function(event) { alert('start: ' + event.url); });
-         ref.addEventListener('exit', function(event) { alert(event.type); });
-
-         ref.addEventListener('loadstop', function(event) {
-             alert('LEITURA COMPLETA!'); 
-         });
+        // ref.addEventListener('loadstop', function(event) {
+       //      alert('LEITURA COMPLETA!'); 
+        // });
     },
     // Bind Event Listeners
     //
